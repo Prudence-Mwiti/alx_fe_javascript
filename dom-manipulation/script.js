@@ -1,45 +1,40 @@
-// Wait for the DOM to fully load
-document.addEventListener('DOMContentLoaded', function () {
-    // Get references to the form, input, and list
-    const form = document.getElementById('item-form');
-    const input = document.getElementById('item-input');
-    const list = document.getElementById('item-list');
+// Array of quote objects
+const quotes = [
+    { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
+    { text: "Don't let yesterday take up too much of today.", category: "Inspiration" },
+    { text: "It's not whether you get knocked down, it's whether you get up.", category: "Perseverance" },
+    { text: "If you are working on something exciting, it will keep you motivated.", category: "Work" },
+    { text: "Success is not in what you have, but who you are.", category: "Life" }
+];
 
-    // Listen for form submission
-    form.addEventListener('submit', function (e) {
-        e.preventDefault(); // prevent page refresh
+// Function to display a random quote
+function displayRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
 
-        const newItem = input.value.trim();
+    document.getElementById("quote").textContent = randomQuote.text;
+    document.getElementById("category").textContent = `Category: ${randomQuote.category}`;
+}
 
-        if (newItem === '') {
-            alert('Please enter an item');
-            return;
-        }
+// Function to add a new quote
+function addQuote() {
+    const quoteText = document.getElementById("new-quote-text").value.trim();
+    const quoteCategory = document.getElementById("new-quote-category").value.trim();
 
-        // Create a new list item
-        const li = document.createElement('li');
-        li.textContent = newItem;
+    if (quoteText && quoteCategory) {
+        quotes.push({ text: quoteText, category: quoteCategory });
 
-        // Create a remove button
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remove';
-        removeBtn.classList.add('remove-btn');
+        document.getElementById("new-quote-text").value = "";
+        document.getElementById("new-quote-category").value = "";
 
-        // Append remove button to the list item
-        li.appendChild(removeBtn);
+        alert("Quote added successfully!");
+    } else {
+        alert("Please fill in both the quote and the category.");
+    }
+}
 
-        // Append list item to the list
-        list.appendChild(li);
+// Event listeners
+document.getElementById("new-quote").addEventListener("click", displayRandomQuote);
+document.getElementById("add-quote").addEventListener("click", addQuote);
 
-        // Clear input field
-        input.value = '';
-    });
-
-    // Listen for clicks on remove buttons
-    list.addEventListener('click', function (e) {
-        if (e.target.classList.contains('remove-btn')) {
-            e.target.parentElement.remove();
-        }
-    });
-});
 
