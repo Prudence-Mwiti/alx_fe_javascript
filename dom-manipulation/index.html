@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Generator</title>
+    <title>Dynamic Quote Generator with Storage</title>
 </head>
 <body>
-    <h1>Random Quote Generator</h1>
+    <h1>Dynamic Quote Generator</h1>
 
     <div id="quoteDisplay"></div>
     <button id="newQuoteBtn">Show New Quote</button>
 
-    <script src="quotes.js"></script>
+    <h3>Add a New Quote</h3>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button id="addQuoteBtn">Add Quote</button>
+
+    <h3>Import & Export</h3>
+    <button id="exportBtn">Export Quotes to JSON</button>
+    <input type="file" id="importFile" accept=".json" />
+
+    <script src="script.js"></script>
 </body>
 </html>
 
