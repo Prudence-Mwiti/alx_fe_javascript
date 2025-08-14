@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Random Quote Generator</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Dynamic Quote Generator — Sync + Filter</title>
 </head>
 <body>
-  <div class="quote-container">
-    <h1>Random Quote Generator</h1>
-    <blockquote id="quote">Click the button to get a quote!</blockquote>
-    <p id="author"></p>
-    <button id="new-quote">New Quote</button>
+  <h1>Dynamic Quote Generator</h1>
+
+  <!-- Filter -->
+  <label for="categoryFilter">Category:</label>
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+  </select>
+
+  <!-- Display -->
+  <div id="quoteContainer" style="margin: 1rem 0;"></div>
+
+  <!-- Sync UI -->
+  <div style="margin: 1rem 0; padding: .5rem; border: 1px solid #ccc;">
+    <strong>Sync Status:</strong> <span id="syncStatus">Idle</span><br/>
+    <button id="syncNow">Sync Now</button>
+    <label style="margin-left: 1rem;">
+      <input type="checkbox" id="autoSyncToggle" />
+      Auto Sync (every 30s)
+    </label>
   </div>
 
-  <script src="quotes.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
